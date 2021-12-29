@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/distortion.css">
+    <link rel="stylesheet" href="https://use.typekit.net/wpu7cjd.css">
+    <link rel="stylesheet" href="https://use.typekit.net/nba1lhu.css">
+</head>
+<script src="js/site.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+<body>
+    <div class="content-container">
+        <div class="top-flower">
+            <img src="images/red_roses_on_white_background-wallpaper-1366x768-removebg-preview.png" alt="" height="10%" width="400px">
+        </div>
+        <div id="particles-js" style="position: absolute; height: 100vh; width: 100%;"></div>
+        <video autoplay loop class="video-background" id="vid1" muted plays-inline>  
+            <source src="Falling Flower Cherry Blossom Petals - Background.mp4" type="video/mp4">
+        </video>
+        <div class="box" id="box">
+            <span style="--i:1;"><img src="images/1.jpg"></span>
+            <span style="--i:2;"><img src="images/2.jpg"></span>
+            <span style="--i:3;"><img src="images/3.jpg"></span>
+            <span style="--i:4;"><img src="images/4.jpg"></span>
+            <span style="--i:5;"><img src="images/5.jpg"></span>
+            <span style="--i:6;"><img src="images/6.jpg"></span>
+            <span style="--i:7;"><img src="images/7.jpg"></span>
+            <span style="--i:8;"><img src="images/8.jpg"></span>
+            <span style="--i:9;"><img src="images/9.jpg"></span>
+            <span style="--i:10;"><img src="images/10.jpg"></span>
+            <span style="--i:11;"><img src="images/11.jpg"></span>
+            <span style="--i:12;"><img src="images/12.jpg"></span>
+            <span style="--i:13;"><img src="images/13.jpg"></span>
+            <span style="--i:14;"><img src="images/14.jpg"></span>
+            <span style="--i:15;"><img src="images/15.jpg"></span>
+            <span style="--i:16;"><img src="images/16.jpg"></span>
+            <span style="--i:17;"><img src="images/17.jpg"></span>
+            <span style="--i:18;"><img src="images/18.jpg"></span>
+            <span style="--i:19;"><img src="images/19.jpg"></span>
+            <span style="--i:20;"><img src="images/20.jpg"></span>
+            <span style="--i:21;"><img src="images/21.jpg"></span>
+            <span style="--i:22;"><img src="images/22.jpg"></span>
+            <span style="--i:23;"><img src="images/23.jpg"></span>
+            <span style="--i:24;"><img src="images/24.jpg"></span>
+            <span style="--i:25;"><img src="images/25.jpg"></span>
+            <span style="--i:27;"><img src="images/27.jpg"></span>
+            <span style="--i:28;"><img src="images/28.jpg"></span>
+            <span style="--i:29;"><img src="images/29.jpg"></span>
+            <span style="--i:30;"><img src="images/30.jpg"></span>
+            <span style="--i:31;"><img src="images/31.jpg"></span>
+            <span style="--i:32;"><img src="images/32.jpg"></span>
+            <span style="--i:33;"><img src="images/33.jpg"></span>
+        </div>
+    </div>
+
+    <div class="console-container" id="wishId">
+        <span id="text" style="display: block;"></span>
+    </div>
+    <img src="images/New Project.png" id="roses" alt="">
+    <div class="name-con" id="nameId">
+
+        <span id="text1"></span>
+    </div>
+    <div class="bottom-right">
+        <img src="images/image-removebg-preview.png" alt="">
+    </div>
+
+    <script>
+        consoleText(['Hello👋 Miss', 'Han Tum Shadwali Tiwari', 'I am speaking to you only', 'There is something for you dhyaan se dekhna',
+            'A Happy wala Birthday to a Girl👩', 'Who always forget', 'How Beautiful😍, How Strong💪,  How Soft Hearted🥰 and How Bhar Bhar ke DrameBaaz😒', 'She is from inside and outside',
+            '🌹🌹Happiest Birthday🌹🌹', 'Shadwali Tiwari '
+        ], 'text')
+
+        function consoleText(words, id) {
+            var visible = true;
+            var con = document.getElementById('console');
+            var letterCnt = 1;
+            var letterCntTwo = 1;
+            var x = 1;
+            var waiting = false;
+            var target = document.getElementById(id);
+            var targetTwo = document.getElementById('text1');
+            var intervalOne, intervalTwo;
+
+            var removeableWords = ['Hello👋 Miss', 'Han Tum Shadwali Tiwari', 'I am speaking to you only', 'There is something for you dhyaan se dekhna',
+                'A Happy wala Birthday to a Girl👩', 'Who always forget', 'How Beautiful😍, How Strong💪,  How Soft Hearted🥰 and How Bhar Bhar ke DrameBaaz😒', 'She is from inside and outside'
+            ];
+            if (words.length > 2) {
+                intervalOne = window.setInterval(function() {
+                    if (letterCnt === 0 && waiting === false) {
+                        waiting = true;
+                        target.innerHTML = removeableWords[0].substring(0, letterCnt)
+                        window.setTimeout(function() {
+                            var usedWord = removeableWords.shift();
+                            words.shift();
+                            x = 1;
+                            letterCnt += x;
+                            waiting = false
+                        }, 40)
+                    } else if (letterCnt === String(removeableWords[0]).length + 1 && waiting === false) {
+                        waiting = true;
+                        window.setTimeout(function() {
+                            x = -1;
+                            letterCnt += x;
+                            waiting = false
+                        }, 50)
+                    } else if (waiting === false) {
+                        target.innerHTML = removeableWords[0].substring(0, letterCnt);
+                        letterCnt += x;
+
+                    }
+                }, 20)
+                intervalTwo = window.setInterval(function() {
+                    if (visible = true) {
+                        con.className = 'container-underscore hidden';
+                        visible = false;
+
+                    } else {
+                        con.className = 'console-underscore';
+                        visible = true;
+                    }
+                }, 50)
+            }
+            setTimeout(function() {
+                clearInterval(intervalOne);
+                clearInterval(intervalTwo);
+                var len = words.length;
+                letterCnt = 1;
+                x = 1;
+
+                window.setInterval(function() {
+                    if (waiting === false) {
+                        target.innerHTML = words[0].substring(0, letterCnt);
+                        letterCnt += x;
+                    }
+                }, 500);
+                window.setInterval(function() {
+                    if (waiting === false) {
+                        targetTwo.innerHTML = words[1].substring(0, letterCntTwo);
+                        letterCntTwo += x;
+                    }
+                }, 800);
+
+            }, 15000);
+        }
+
+
+        setTimeout(function() {
+            var name = document.getElementById("nameId");
+            var wish = document.getElementById("wishId");
+            //name.style.transform = 'translateY(170px)';
+
+            name.style.top = '470px';
+            name.style.transition = 'all 2s';
+            wish.style.top = '-430px';
+            wish.style.transition = 'all 2s';
+
+
+        }, 40000)
+        setTimeout(() => {
+            var focus = document.getElementById("box");
+            focus.style.display = "block";
+            focus.style.visibility = "visible";
+
+            $('.box span').animate({
+                opacity: '1'
+            }, 5000);
+
+            document.getElementById('roses').style.opacity = '1';
+        }, 43000);
+    </script>
+
+</body>
+
+
+<script src="js/particles.js"></script>
+<script src="js/app.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.box span img').mouseover(function() {
+            if ($(this).hasClass('spin')) {
+                $('.box span img').removeClass('spin');
+            } else {
+                $('.box span img').removeClass('spin');
+                $(this).addClass('spin');
+            }
+
+        });
+
+        $('.box span img').mouseleave(function() {
+            $(this).removeClass('spin');
+        });
+
+
+    });
+    document.getElementById('vid1').addEventListener('loadedmetadata', function() {
+        this.currentTime = 6;
+
+    }, false);
+</script>
+
+</html>

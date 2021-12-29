@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/distortion.css">
+    <link rel="stylesheet" href="https://use.typekit.net/wpu7cjd.css">
+    <link rel="stylesheet" href="https://use.typekit.net/nba1lhu.css">
+</head>
+
+<body>
+    <div class="console-container" id="wishId">
+        <span id="text" style="display: block;"></span>
+    </div>
+    <div class="name-con" id="nameId">
+        <span id="text1"></span>
+    </div>
+
+    <script>
+        consoleText(['Hello👋 Miss', 'Han Tum Shadwali Tiwari', 'I am speaking to you only', 'There is something for you dhyaan se dekhna',
+            'A Happy wala Birthday to a Girl👩', 'Who always forget', 'How Beautiful😍, How Strong💪,  How Soft Hearted🥰 and How Bhar Bhar ke DrameBaaz😒', 'She is from inside and outside',
+            '🌹🌹Happiest Birthday🌹🌹', 'Shadwali Tiwari '
+        ], 'text')
+
+        function consoleText(words, id) {
+            var visible = true;
+            var con = document.getElementById('console');
+            var letterCnt = 1;
+            var letterCntTwo = 1;
+            var x = 1;
+            var waiting = false;
+            var target = document.getElementById(id);
+            var targetTwo = document.getElementById('text1');
+            var intervalOne, intervalTwo;
+
+            var removeableWords = ['Hello👋 Miss', 'Han Tum Shadwali Tiwari', 'I am speaking to you only', 'There is something for you dhyaan se dekhna',
+                'A Happy wala Birthday to a Girl👩', 'Who always forget', 'How Beautiful😍, How Strong💪,  How Soft Hearted🥰 and How Bhar Bhar ke DrameBaaz😒', 'She is from inside and outside'
+            ];
+            if (words.length > 2) {
+                intervalOne = window.setInterval(function() {
+                    if (letterCnt === 0 && waiting === false) {
+                        waiting = true;
+                        target.innerHTML = removeableWords[0].substring(0, letterCnt)
+                        window.setTimeout(function() {
+                            var usedWord = removeableWords.shift();
+                            words.shift();
+                            x = 1;
+                            letterCnt += x;
+                            waiting = false
+                        }, 40)
+                    } else if (letterCnt === String(removeableWords[0]).length + 1 && waiting === false) {
+                        waiting = true;
+                        window.setTimeout(function() {
+                            x = -1;
+                            letterCnt += x;
+                            waiting = false
+                        }, 50)
+                    } else if (waiting === false) {
+                        target.innerHTML = removeableWords[0].substring(0, letterCnt);
+                        letterCnt += x;
+
+                    }
+                }, 20)
+                intervalTwo = window.setInterval(function() {
+                    if (visible = true) {
+                        con.className = 'container-underscore hidden';
+                        visible = false;
+
+                    } else {
+                        con.className = 'console-underscore';
+                        visible = true;
+                    }
+                }, 50)
+            }
+            setTimeout(function() {
+                clearInterval(intervalOne);
+                clearInterval(intervalTwo);
+                var len = words.length;
+                letterCnt = 1;
+                x = 1;
+
+                window.setInterval(function() {
+                    if (waiting === false) {
+                        target.innerHTML = words[0].substring(0, letterCnt);
+                        letterCnt += x;
+                    }
+                }, 500);
+                window.setInterval(function() {
+                    if (waiting === false) {
+                        targetTwo.innerHTML = words[1].substring(0, letterCntTwo);
+                        letterCntTwo += x;
+                    }
+                }, 800);
+
+            }, 15000);
+        }
+
+
+        setTimeout(function() {
+            var name = document.getElementById("nameId");
+            var wish = document.getElementById("wishId");
+            //name.style.transform = 'translateY(170px)';
+
+            name.style.top = '470px';
+            name.style.transition = 'all 2s';
+            wish.style.top = '-430px';
+            wish.style.transition = 'all 2s';
+
+
+
+        }, 40000)
+    </script>
+
+</body>
+
+</html>
